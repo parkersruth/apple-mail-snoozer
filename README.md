@@ -260,14 +260,16 @@ You can check for errors in the `system.log` using the Console utility applicati
 
 Create a new "Quick Action" in the Automator application. Configure it as shown in the image below. Make sure to replace the path to your snooze script. This will create a service that snoozes the selected messages in mail. Save the file as "Snooze".
 
-![Screen Shot 2021-02-04 at 1.12.56 AM](/Users/psr/Documents/Notes/imgs/Screen Shot 2021-02-04 at 1.12.56 AM.png)
+![automator](./imgs/automator.png)
 
 ### Step 5 — Keyboard Shortcut
 
 The last step is to create a handy keyboard shortcut. Open the System Preferences application. Go to Keyboard > Shortcuts. Select "Services" from the left menu. Find the "Snooze" service you created and set your preferred keyboard shortcut.
 
-
+![system-prefs](./imgs/system-prefs.png)
 
 ### TADA!
 
 You should now be configured with a snooze function in Apple Mail! Happy snoozing!
+
+
