@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  
+    <key>Label</key>
+    <string>com.example.unsnoozer</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>osascript</string>
+        <string>/Users/username/my-snoozer-code-path/unsnooze.scpt</string>
+    </array>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/username/my-snoozer-code-path/unsnooze_launchd_error.txt</string>
+
+    <key>StandardOutPath</key>
+    <string>/Users/username/my-snoozer-code-path/unsnooze_launchd_log.txt</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>0</integer>
+        <key>Minute</key>
+        <integer>5</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+</dict>
+</plist>
