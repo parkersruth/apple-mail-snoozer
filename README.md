@@ -2,7 +2,7 @@
 
 
 
-If you are determined to use the Apple Mail client but wish to Snooze emails, then you've come to the right place! With these instructions, you can set up a keyboard shortcut to Snooze emails for an arbitrary number of days.
+If you use the Apple Mail client but wish to Snooze emails, then you've come to the right place! With these instructions, you can set up a keyboard shortcut to Snooze emails for an arbitrary number of days.
 
 
 
