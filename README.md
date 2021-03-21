@@ -111,6 +111,7 @@ You can test this script by running it in the Script Editor application.
 Create a file called `unsnooze.scpt` with the AppleScript code below. This code checks for any reminders that are past their due date, finds the corresponding email to unsnooze, and deletes the reminders. It also checks for any emails that have been flagged as snoozed but lack a corresponding reminder.
 
 ```
+
 (* FLAG COLORS
    	-1 = no flag
 	0 = Red
@@ -137,7 +138,6 @@ tell application "Reminders"
 		set dueReminders to (every reminder in theList whose due date is less than (current date))
 		repeat with theReminder in dueReminders
 			set theId to body of theReminder as string
-			
 			tell application "Mail"
 				try
 					set theMessage to (first message of inbox whose message id = theId)
@@ -145,7 +145,7 @@ tell application "Reminders"
 						# UNSNOOZING BEHAVIOR
 						-------------------------------------
 						set flag index of theMessage to unsnoozeColor # change flag
-						set read status of theMessage to false # mark unread
+						# set read status of theMessage to false # mark unread
 						-------------------------------------					
 						log "Unsnoozing: " & subject of theMessage as string
 					end if
@@ -159,25 +159,32 @@ tell application "Reminders"
 			delete (every reminder whose completed is true)
 		end tell
 		
-		# handle messages flagged as snoozed without corresponding reminder	s
+		# handle messages flagged as snoozed without corresponding reminders
 		set allReminders to (every reminder in theList whose completed is false)
+		set allReminderIds to {}
+		repeat with theReminder in allReminders
+			# set end of allReminderIds to message id of theReminder as string
+			set end of allReminderIds to body of theReminder as string
+		end repeat
 		tell application "Mail"
 			set snoozedMessages to (every message of inbox whose flag index = snoozeColor)
 			repeat with theMessage in snoozedMessages
+				log "processing: " & (subject of theMessage as string)
+				
 				set hasReminder to false
 				set theMessageId to message id of theMessage as string
-				tell application "Reminders"
-					repeat with theReminder in allReminders
-						if body of theReminder = theMessageId then
-							set hasReminder to true
-						end if
-					end repeat
-				end tell
+				repeat with theId in allReminderIds
+					if ((theId as string) = (theMessageId as string)) then
+						set hasReminder to true
+						exit repeat
+					end if
+				end repeat
+				
 				if hasReminder is false then
 					# UNSNOOZING BEHAVIOR
 					-------------------------------------
 					set flag index of theMessage to unsnoozeColor # change flag
-					set read status of theMessage to false # mark unread
+					# set read status of theMessage to false # mark unread
 					-------------------------------------
 				end if
 			end repeat
